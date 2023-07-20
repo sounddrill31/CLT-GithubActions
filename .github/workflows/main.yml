@@ -1,0 +1,36 @@
+name: CLT_GH
+on:
+  workflow_dispatch:
+    inputs:
+      GSI_URL:
+        description: 'URL To GSI'
+        required: true
+        default: 'https://sourceforge.net/projects/andyyan-gsi/files/lineage-20-td/lineage-20.0-20230716-UNOFFICIAL-arm64_bvN.img.xz/download'
+      ROM_URL:
+        description: 'URL to Stock or LineageOS ROM'
+        required: true
+        default: 'https://mirrorbits.lineageos.org/full/addison/20230622/lineage-18.1-20230622-nightly-addison-signed.zip'
+      MEDIAFIRE_GSI:
+        description: 'Is the GSI a Mediafire Link?'
+      MEDIAFIRE_ROM:
+        description: 'Is the ROM a Mediafire Link?'
+jobs:
+  runs on: ubuntu-20.04
+  steps:
+  - name: Download GSI
+    if: ${{ github.event.inputs.MEDIAFIRE_GSI }} == 'yes'  
+      run: |
+          pip3 install git+https://github.com/Juvenal-Yescas/mediafire-dl
+          mediafire-dl ${{ github.event.inputs.GSI_URL }}
+    else:
+      run: |
+          wget ${{ github.event.inputs.GSI_URL }}
+  - name: Download ROM
+    if: ${{ github.event.inputs.MEDIAFIRE_ROM }} == 'yes'  
+      run: |
+          pip3 install git+https://github.com/Juvenal-Yescas/mediafire-dl
+          mediafire-dl ${{ github.event.inputs.ROM_URL }}
+    else:
+      run: |
+          wget ${{ github.event.inputs.ROM_URL }}
+      #if mediafire link, download with mediafire, if not, download using WGET
