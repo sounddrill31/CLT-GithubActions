@@ -11,10 +11,10 @@ on:
         required: true
         default: 'https://mirrorbits.lineageos.org/full/addison/20230622/lineage-18.1-20230622-nightly-addison-signed.zip'
       MEDIAFIRE_GSI:
-        description: 'Is the GSI a Mediafire Link?'
+        description: 'Is the GSI a Mediafire Link?(WIP)'
         default: 'no'
       MEDIAFIRE_ROM:
-        description: 'Is the ROM a Mediafire Link?'
+        description: 'Is the ROM a Mediafire Link?(WIP)'
         default: 'no'
       GSI_FILENAME:
         description: 'Enter the Filename of the GSI'
@@ -22,6 +22,9 @@ on:
       ROM_FILENAME:
         description: 'Enter the Filename of the ROM'
         default: 'lineage-18.1-20230622-nightly-addison-signed.zip'
+      PROPRIETARY:
+        description: 'Direct Link to Proprietary-Files.txt'
+        default: 'https://gitlab.com/sounddrill311/motorola/addison/-/raw/lineage_addison-userdebug-11-RQ3A.211001.001-f9461655da-release-keys/lineage-device-tree/proprietary-files.txt'
 jobs:
   build:
     runs-on: ubuntu-20.04
@@ -45,3 +48,6 @@ jobs:
       run: |
             wget ${{ github.event.inputs.ROM_URL }} -O ${{ github.event.inputs.ROM_FILENAME }}
       #if mediafire link, download with mediafire, if not, download using WGET
+    - name: CLT
+      run: |
+            
