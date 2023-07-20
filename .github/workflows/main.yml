@@ -16,6 +16,12 @@ on:
       MEDIAFIRE_ROM:
         description: 'Is the ROM a Mediafire Link?'
         default: 'no'
+      GSI_FILENAME:
+        description: 'Enter the Filename of the GSI'
+        default: 'lineage-20.0-20230716-UNOFFICIAL-arm64_bvN.img.xz'
+      ROM_FILENAME:
+        description: 'Enter the Filename of the ROM'
+        default: 'lineage-18.1-20230622-nightly-addison-signed.zip'
 jobs:
   build:
     runs-on: ubuntu-20.04
