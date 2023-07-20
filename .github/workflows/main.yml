@@ -34,7 +34,7 @@ jobs:
     - name: Download GSI (wget) 
       if: ${{ github.event.inputs.MEDIAFIRE_GSI == 'no'  }} 
       run: |
-            wget ${{ github.event.inputs.GSI_URL }}
+            wget ${{ github.event.inputs.GSI_URL }} -O ${{ github.event.inputs.GSI_FILENAME }}
     - name: Download ROM
       if: ${{ github.event.inputs.MEDIAFIRE_ROM == 'yes' }}   
       run: |
@@ -43,5 +43,5 @@ jobs:
     - name: Download ROM (wget) 
       if: ${{ github.event.inputs.MEDIAFIRE_ROM == 'no' }} 
       run: |
-            wget ${{ github.event.inputs.ROM_URL }}
+            wget ${{ github.event.inputs.ROM_URL }} -O ${{ github.event.inputs.ROM_FILENAME }}
       #if mediafire link, download with mediafire, if not, download using WGET
