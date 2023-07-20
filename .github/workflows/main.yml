@@ -53,6 +53,7 @@ jobs:
           mkdir ROM && mkdir GSI
           mv ${{ github.event.inputs.ROM_FILENAME }} ROM
           mv ${{ github.event.inputs.GSI_FILENAME }} GSI
+          ls -a ROM && ls -a GSI
           unzip ROM/*.zip
-          $ tar xvf GSI/*.xz 
+          tar xvf GSI/*.xz 
             
