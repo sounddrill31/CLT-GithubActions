@@ -50,4 +50,9 @@ jobs:
       #if mediafire link, download with mediafire, if not, download using WGET
     - name: CLT
       run: |
+          mkdir ROM && mkdir GSI
+          mv ${{ github.event.inputs.ROM_FILENAME }} ROM
+          mv ${{ github.event.inputs.GSI_FILENAME }} GSI
+          unzip ROM/*.zip
+          $ tar xvf GSI/*.xz 
             
